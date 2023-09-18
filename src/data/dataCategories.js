@@ -1,60 +1,48 @@
 export default [
-  { title: 'smartphones' },
+  { title: 'Aceite, vinagre y sal' },
   {
-    title: 'laptops',
+    title: 'Agua y refrescos',
   },
   {
-    title: 'fragrances',
+    title: 'Aperitivos',
   },
   {
-    title: 'skincare',
+    title: 'Arroz, legumbres y pasta',
   },
   {
-    title: 'groceries',
+    title: 'Azucar, caramelos y chocolate',
   },
   {
-    title: 'home-decoration',
+    title: 'Bodega',
   },
   {
-    title: 'furniture',
+    title: 'Cacao, cafe e infuciones',
   },
   {
-    title: 'tops',
+    title: 'Carnes',
   },
   {
-    title: 'womens-dresses',
+    title: 'Cereales y galletas',
   },
   {
-    title: 'womens-shoes',
+    title: 'Chacuteria y quesos',
   },
   {
-    title: 'mens-shirts',
+    title: 'Congelados',
   },
   {
-    title: 'mens-shoes',
+    title: 'Conservas, caldos y cremas',
   },
   {
-    title: 'mens-watches',
+    title: 'Fruta y verdura',
   },
   {
-    title: 'womens-watches',
+    title: 'Huevo, leche y mantequilla',
   },
   {
-    title: 'womens-bags',
+    title: 'Panadería y pastelería',
   },
   {
-    title: 'womens-jewellery',
-  },
-  {
-    title: 'sunglasses',
-  },
-  {
-    title: 'automotive',
-  },
-  {
-    title: 'motorcycle',
-  },
-  {
-    title: 'lighting',
+    title: 'Postres y yogures',
   },
 ]

@@ -1,26 +1,30 @@
-import { FlatList, SafeAreaView, View } from 'react-native'
+import { FlatList, SafeAreaView, View } from "react-native";
+import { colors } from "../../constants/colors";
 
-import { CategoryItem } from './components'
-import { Header } from '../../components'
-import React from 'react'
-import dataCategories from '../../data/dataCategories'
-import styles from './Home.style'
+import { CategoryItem } from "./components";
+import { Header } from "../../components";
+import React from "react";
+import dataCategories from "../../data/dataCategories";
+import styles from "./Home.style";
 
-const Home = ({ navigation }) => {
+const Home = ({ setCategorySelected }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={'Categories'} />
+      <Header title={"Categories"} />
       <View style={styles.listContainer}>
         <FlatList
           data={dataCategories}
-          keyExtractor={category => category.title}
+          keyExtractor={(category) => category.title}
           renderItem={({ item }) => (
-            <CategoryItem category={item.title} navigation={navigation} />
+            <CategoryItem
+              category={item.title}
+              setCategorySelected={setCategorySelected}
+            />
           )}
         />
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
