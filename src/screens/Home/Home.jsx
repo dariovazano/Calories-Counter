@@ -7,7 +7,7 @@ import React from "react";
 import dataCategories from "../../data/dataCategories";
 import styles from "./Home.style";
 
-const Home = ({ setCategorySelected }) => {
+const Home = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header title={"Categories"} />
@@ -16,10 +16,7 @@ const Home = ({ setCategorySelected }) => {
           data={dataCategories}
           keyExtractor={(category) => category.title}
           renderItem={({ item }) => (
-            <CategoryItem
-              category={item.title}
-              setCategorySelected={setCategorySelected}
-            />
+            <CategoryItem category={item.title} navigation={navigation} />
           )}
         />
       </View>
