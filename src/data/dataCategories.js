@@ -16,7 +16,7 @@ export default [
     title: 'Bodega',
   },
   {
-    title: 'Cacao, cafe e infuciones',
+    title: 'Cacao, café e infuciones',
   },
   {
     title: 'Carnes',
