@@ -6,11 +6,13 @@ import { Header } from "../../components";
 import React from "react";
 import dataCategories from "../../data/dataCategories";
 import styles from "./Home.style";
+import Name from "../../components/Name/Name";
 
 const Home = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header title={"Categories"} />
+      <Name />
       <View style={styles.listContainer}>
         <FlatList
           data={dataCategories}
