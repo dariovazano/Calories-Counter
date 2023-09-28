@@ -16,6 +16,7 @@ const Name = () => {
       </View>
       <View>
         <TextInput
+          style={styles.input}
           placeholder="introducir nombre"
           value={inputToAdd}
           onChangeText={(value) => setInputToAdd(value)}
@@ -36,7 +37,7 @@ export default Name;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "red",
-    height: 50,
+    height: 100,
     flexDirection: "row",
     backgroundColor: "green",
     justifyContent: "space-between",
@@ -51,8 +52,9 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   input: {
+    paddingTop: 5,
     backgroundColor: "white",
-    width: "80%",
+    width: "100%",
     height: 30,
   },
   inputContaienr: {
