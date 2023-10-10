@@ -2,14 +2,12 @@ import { StyleSheet } from 'react-native'
 import { colors } from '../../constants/colors'
 
 export default styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
+  mapPreview: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  listContainer: {
-    flex: 4,
-  },
-  buttonContainer: {
-    flex: 1,
+  mapImage: {
+    width: 300,
+    height: 300,
   },
 })

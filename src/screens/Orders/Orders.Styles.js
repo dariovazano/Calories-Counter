@@ -2,11 +2,8 @@ import { StyleSheet } from 'react-native'
 import { colors } from '../../constants/colors'
 
 export default styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.primary,
-    },
-    listContainer: {
-        paddingHorizontal: 15,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: 'red',
+  },
 })

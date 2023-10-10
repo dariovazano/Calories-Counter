@@ -4,16 +4,18 @@ import { colors } from '../../constants/colors'
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
+  },
+  imageContainer: {
+    height: '50%',
+    width: '100%',
   },
   image: {
-    height: '50%',
-    width: '90%',
+    height: '100%',
   },
   title: {
     fontSize: 30,
-    marginVertical: 15,
-    fontFamily: 'KodchasanLightItalic',
+    fontWeight: 'bold',
   },
   price: {
     fontSize: 20,

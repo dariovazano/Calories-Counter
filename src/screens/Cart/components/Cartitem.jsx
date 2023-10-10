@@ -1,25 +1,34 @@
-import { View, Text, Pressable } from "react-native";
-import React from "react";
-import Faether from "@expo/vector-icons/Feather";
-import styles from "./Cartitem.Style";
+import { Image, Pressable, Text, View } from 'react-native'
 
-const Cartitem = () => {
+import Feather from '@expo/vector-icons/Feather'
+import React from 'react'
+import styles from './CartItem.styles'
+
+const Cartitem = ({ item }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <View>
-        <Text>Nombre</Text>
+        <Image
+          style={styles.image}
+          source={{
+            uri: item.images[0],
+          }}
+        />
       </View>
       <View>
+        <Text style={styles.name}>{item.title}</Text>
+      </View>
+      <View style={styles.details}>
         <View>
-          <Text>Cantidad</Text>
-          <Text>Precio</Text>
+          <Text>{item.quantity}</Text>
+          <Text>{item.price}</Text>
         </View>
         <Pressable>
-          <Faether name="trash" size={24} color="red" />
+          <Feather name="trash" size={24} color={'red'} />
         </Pressable>
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default Cartitem;
+export default Cartitem
