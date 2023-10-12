@@ -5,6 +5,7 @@ export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    justifyContent: 'center',
   },
   imageContainer: {
     height: '50%',
@@ -17,9 +18,21 @@ export default styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
-  price: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginVertical: 15,
+  valor: {
+    fontSize: 24,
+    fontVariant: '',
   },
+  macros: {
+    fontSize: 18,
+    fontVariant: '',
+  },
+  loginButton: {
+    backgroundColor: colors.primary,
+    width: '50%',
+    height: 50,
+    borderRadius: 10,
+    marginBottom: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 })
