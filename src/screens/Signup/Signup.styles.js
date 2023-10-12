@@ -15,11 +15,12 @@ export default styles = StyleSheet.create({
   },
   inputEmail: {
     width: '95%',
-    backgroundColor: colors.secondary,
-    height: 30,
+    backgroundColor: colors.tertiary,
+    height: 40,
     marginVertical: 15,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 10,
   },
   loginButton: {
     backgroundColor: colors.primary,
@@ -33,4 +34,15 @@ export default styles = StyleSheet.create({
   email: {
     width: '95%',
   },
+  image: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+  text: {
+    color: 'white',
+    fontSize: 18,
+  }
 })

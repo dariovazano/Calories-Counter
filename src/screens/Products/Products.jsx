@@ -5,30 +5,22 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from 'react-native'
-import React, { useEffect, useState } from 'react'
+} from "react-native";
+import React, { useEffect, useState } from "react";
 
-import { SearchInput } from '../../components'
-import styles from './Products.style'
-import { useGetProductsByCategoryQuery } from '../../services/shopApi'
-import { useSelector } from 'react-redux'
-
+import { SearchInput } from "../../components";
+import styles from "./Products.style";
+import { useGetProductsByCategoryQuery } from "../../services/shopApi";
+import { useSelector } from "react-redux";
+import { Header } from "../../components";
 const Products = ({ navigation }) => {
-  const category = useSelector(state => state.shop.categorySelected)
-  const [keyword, setKeyword] = useState('')
-  const { data, isLoading } = useGetProductsByCategoryQuery(category)
-
-  /* useEffect(() => {
-    //(data)
-    if (data) {
-      const productsFiltered = data.filter(product =>
-        product.title.includes(keyword)
-      )
-    }
-  }, []) */
+  const category = useSelector((state) => state.shop.categorySelected);
+  const [keyword, setKeyword] = useState("");
+  const { data, isLoading } = useGetProductsByCategoryQuery(category);
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header title={`${category}`} />
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
         {!isLoading && (
@@ -40,7 +32,7 @@ const Products = ({ navigation }) => {
               <TouchableOpacity
                 style={styles.productContainer}
                 onPress={() =>
-                  navigation.navigate('Details', { product: item })
+                  navigation.navigate("Details", { product: item })
                 }
               >
                 <Image
@@ -50,15 +42,28 @@ const Products = ({ navigation }) => {
                   }}
                 />
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.price}>{`$${item.price.toFixed(2)}`}</Text>
+                <Text style={styles.valor}>{`${item.valoreEnergetico.toFixed(
+                  2
+                )} Kcal`}</Text>
+                <Text
+                  style={styles.macros}
+                >{`Proteinas: ${item.proteinas.toFixed(2)} g`}</Text>
+                <Text
+                  style={styles.macros}
+                >{`Carbohidratos: ${item.hidratosDeCarbono.toFixed(
+                  2
+                )} g`}</Text>
+                <Text style={styles.macros}>{`Grasas: ${item.grasas.toFixed(
+                  2
+                )} g`}</Text>
               </TouchableOpacity>
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={(item) => item.id}
           />
         )}
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

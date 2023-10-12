@@ -10,7 +10,10 @@ export default styles = StyleSheet.create({
 
   },
   container: {
-    backgroundColor: colors.quaternary
-
+    backgroundColor: colors.primary,
+    borderBottomEndRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderColor: colors.secondary,
+    borderWidth: 3,
   }
 })

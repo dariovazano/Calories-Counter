@@ -1,14 +1,15 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from "react-native";
 
-import CartNavigator from './CartNavigator'
-import Feather from '@expo/vector-icons/Feather'
-import OrdersNavigator from './OrdersNavigator'
-import ProfileNavigator from './ProfileNavigator'
-import StackNavigator from './StackNavigator'
-import { colors } from '../constants/colors'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import CartNavigator from "./CartNavigator";
+import Feather from "@expo/vector-icons/Feather";
+import OrdersNavigator from "./OrdersNavigator";
+import ProfileNavigator from "./ProfileNavigator";
+import StackNavigator from "./StackNavigator";
+import { colors } from "../constants/colors";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
-const BottomTab = createBottomTabNavigator()
+const BottomTab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
   return (
@@ -26,7 +27,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={focused ? styles.iconContainer : null}>
-              <Feather name="shopping-bag" size={24} color={colors.white} />
+              <Ionicons name="fast-food-outline" size={30} color="black" />
             </View>
           ),
         }}
@@ -37,7 +38,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={focused ? styles.iconContainer : null}>
-              <Feather name="shopping-cart" size={24} color={colors.white} />
+              <Ionicons name="today-outline" size={30} color="black" />
             </View>
           ),
         }}
@@ -48,7 +49,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={focused ? styles.iconContainer : null}>
-              <Feather name="list" size={24} color={colors.white} />
+              <Feather name="pie-chart" size={30} color={colors.white} />
             </View>
           ),
         }}
@@ -59,29 +60,31 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={focused ? styles.iconContainer : null}>
-              <Feather name="user" size={24} color={colors.white} />
+              <Ionicons name="md-add-circle-outline" size={35} color="black" />
             </View>
           ),
         }}
       />
     </BottomTab.Navigator>
-  )
+  );
 }
 
-export default BottomTabNavigator
+export default BottomTabNavigator;
 
 const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: colors.primary,
     borderTopRightRadius: 25,
     borderTopLeftRadius: 25,
-    paddingTop: 5,
+    paddingTop: 1,
+    borderColor: colors.secondary,
+    borderWidth: 3,
   },
   iconContainer: {
-    backgroundColor: colors.secondary,
-    borderRadius: 20,
+    backgroundColor: colors.white,
+    borderRadius: 30,
     padding: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
-})
+});

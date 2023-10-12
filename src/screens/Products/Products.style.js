@@ -23,6 +23,8 @@ export default styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 15,
     gap: 10,
+    borderColor: colors.secondary,
+    borderWidth: 3,
   },
   image: {
     alignSelf: 'center',
@@ -33,8 +35,13 @@ export default styles = StyleSheet.create({
     fontWeight: '700',
     fontVariant: 'small-caps',
   },
-  price: {
+  valor: {
     fontSize: 20,
     fontVariant: '',
   },
+  macros: {
+    fontSize: 10,
+    fontVariant: '',
+  }
+
 })
