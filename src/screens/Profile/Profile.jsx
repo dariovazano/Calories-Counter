@@ -12,14 +12,42 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setCameraImage } from "../../features/auth/authSlice";
+
+////
+import { setNewName } from "../../features/newProduct/newProductSlice";
+/////
+
 import styles from "./Profile.styles";
 import { usePostProfileImageMutation } from "../../services/shopApi";
 import { Header } from "../../components";
+import {
+  useGetCategoriesQuery,
+  usePostNewProductMutation,
+} from "../../services/shopApi";
+import SelectDropdown from "react-native-select-dropdown";
+import CategoryItemStyle from "../Home/components/CategoryItem/CategoryItem.style";
 
 const Profile = ({ navigation }) => {
+  /////
+  const [name, setName] = useState("");
+  /////
+
+  ///
+  const { data, isLoading } = useGetCategoriesQuery();
+  const auxCat = [];
+  data.forEach((element) => {
+    auxCat.push(element.title);
+  });
+
+  ///
+
   const image = useSelector((state) => state.auth.imageCamera);
   const { localId } = useSelector((state) => state.auth);
   const [triggerSaveProfileImage, result] = usePostProfileImageMutation();
+  ///
+  const [triggerSaveNewProduct, result2] = usePostNewProductMutation();
+  ///
+
   const dispatch = useDispatch();
 
   const verifyCameraPermissions = async () => {
@@ -53,6 +81,10 @@ const Profile = ({ navigation }) => {
   const confirmImage = () => {
     triggerSaveProfileImage({ image, localId });
     console.log(result);
+    ///
+    triggerSaveNewProduct({ name, image });
+    console.log(result2);
+    ///
   };
 
   return (
@@ -62,16 +94,34 @@ const Profile = ({ navigation }) => {
         <View style={styles.loginContainer}>
           <Text style={styles.text}>Categoría</Text>
           {/*  <Input mode="flat" label="Email" style={styles.email} /> */}
+
+          <SelectDropdown
+            data={auxCat}
+            onSelect={(selectedItem, index) => {
+              console.log(selectedItem, index);
+            }}
+            buttonTextAfterSelection={(selectedItem, index) => {
+              // text represented after item is selected
+              // if data array is an array of objects then return selectedItem.property to render after item is selected
+              return selectedItem;
+            }}
+            rowTextForSelection={(item, index) => {
+              // text represented for each item in dropdown
+              // if data array is an array of objects then return item.property to represent item in dropdown
+              return item;
+            }}
+          />
+
           <TextInput
             style={styles.inputNewProduct}
             // value={email}
             // onChangeText={setEmail}
           />
-          <Text style={styles.text}>Nombre</Text>
+          <Text style={styles.text}>{name}</Text>
           <TextInput
             style={styles.inputNewProduct}
-            // value={password}
-            // onChangeText={setPassword}
+            value={name}
+            onChangeText={setName}
           />
           <Text style={styles.text}>valor energético</Text>
           <TextInput

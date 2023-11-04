@@ -44,13 +44,13 @@ const Signup = ({ navigation }) => {
           />
           <TextInput
             style={styles.inputEmail}
-            value={password}
-            onChangeText={setPassword}
+            value={confirmPass}
+            onChangeText={setConfirmPass}
           />
           <TextInput
             style={styles.inputEmail}
-            value={confirmPass}
-            onChangeText={setConfirmPass}
+            value={password}
+            onChangeText={setPassword}
           />
           <Pressable style={styles.loginButton} onPress={onSubmit}>
             <Text style={{ color: "white" }}>Sign up</Text>

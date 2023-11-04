@@ -1,7 +1,7 @@
-import { Text, View } from 'react-native'
+import { Text, View } from "react-native";
 
-import React from 'react'
-import styles from './Orders.styles'
+import React from "react";
+import styles from "./Orders.Styles";
 
 const Orders = () => {
   return (
@@ -13,7 +13,7 @@ const Orders = () => {
       <Text>Orders</Text>
       <Text>Orders</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Orders
+export default Orders;
