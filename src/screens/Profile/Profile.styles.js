@@ -2,6 +2,16 @@ import { StyleSheet } from 'react-native'
 import { colors } from '../../constants/colors'
 
 export default styles = StyleSheet.create({
+  select: {
+    width: '95%',
+    background: colors.secondary,
+    height: 40,
+    marginVertical: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+
   container: {
     scroll: 'true',
     width: '100%',
@@ -11,8 +21,10 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
+    margin: 3,
     width: 200,
     height: 200,
+    borderRadius: 10,
   },
   cameraButton: {
     backgroundColor: colors.secondary,
@@ -29,10 +41,10 @@ export default styles = StyleSheet.create({
     width: '95%',
     backgroundColor: colors.tertiary,
     height: 40,
-    marginVertical: 15,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+    textAlign: 'center',
   },
   loginButton: {
     backgroundColor: colors.primary,
@@ -43,4 +55,21 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text: {
+    marginTop: 20
+  },
+  inputContainer: {
+    marginTop: 3,
+    marginBottom: 3,
+    scroll: 'true',
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 12,
+
+  }
 })

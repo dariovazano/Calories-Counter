@@ -13,10 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setCameraImage } from "../../features/auth/authSlice";
 
-////
-import { setNewName } from "../../features/newProduct/newProductSlice";
-/////
-
 import styles from "./Profile.styles";
 import { usePostProfileImageMutation } from "../../services/shopApi";
 import { Header } from "../../components";
@@ -26,11 +22,32 @@ import {
 } from "../../services/shopApi";
 import SelectDropdown from "react-native-select-dropdown";
 import CategoryItemStyle from "../Home/components/CategoryItem/CategoryItem.style";
+import { colors } from "../../constants/colors";
 
 const Profile = ({ navigation }) => {
   /////
   const [name, setName] = useState("");
+  const [nameOk, setNameOk] = useState("red");
+  const [newCategorie, setNewCategorie] = useState("");
+  const [categorieOk, setCategorieOk] = useState("red");
+  const [newCalories, setNewCalories] = useState("");
+  const [caloriesOk, setCaloriesOk] = useState("red");
+  const [newFat, setNewFat] = useState("");
+  const [fatOk, setFatOk] = useState("red");
+  const [newProtein, setNewProtein] = useState("");
+  const [proteinOk, setProteinOk] = useState("red");
+  const [newCarbohydrates, setNewCarbohydrates] = useState("");
+  const [carbonhydratesOk, setCarbonhydratesOk] = useState("red");
+  const [newPrice, setNewPrice] = useState("");
+  const [priceOk, setPriceOk] = useState("red");
+  const [check, setCheck] = useState(true);
+
   /////
+
+  useEffect(() => {
+    console.log(caloriesOk);
+    console.log(newCalories);
+  }, [caloriesOk, categorieOk, proteinOk, fatOk, carbonhydratesOk]);
 
   ///
   const { data, isLoading } = useGetCategoriesQuery();
@@ -92,83 +109,171 @@ const Profile = ({ navigation }) => {
       <View style={styles.container}>
         <Header title={"Agregar alimento"} />
         <View style={styles.loginContainer}>
-          <Text style={styles.text}>Categoría</Text>
-          {/*  <Input mode="flat" label="Email" style={styles.email} /> */}
-
-          <SelectDropdown
-            data={auxCat}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text represented after item is selected
-              // if data array is an array of objects then return selectedItem.property to render after item is selected
-              return selectedItem;
-            }}
-            rowTextForSelection={(item, index) => {
-              // text represented for each item in dropdown
-              // if data array is an array of objects then return item.property to represent item in dropdown
-              return item;
-            }}
-          />
-
-          <TextInput
-            style={styles.inputNewProduct}
-            // value={email}
-            // onChangeText={setEmail}
-          />
-          <Text style={styles.text}>{name}</Text>
-          <TextInput
-            style={styles.inputNewProduct}
-            value={name}
-            onChangeText={setName}
-          />
-          <Text style={styles.text}>valor energético</Text>
-          <TextInput
-            style={styles.inputNewProduct}
-            // value={confirmPass}
-            // onChangeText={setConfirmPass}
-          />
-          <Text style={styles.text}>Proteinas</Text>
-          <TextInput
-            style={styles.inputNewProduct}
-            // value={confirmPass}
-            // onChangeText={setConfirmPass}
-          />
-          <Text style={styles.text}>Carboidratos</Text>
-          <TextInput
-            style={styles.inputNewProduct}
-            // value={confirmPass}
-            // onChangeText={setConfirmPass}
-          />
-          <Text style={styles.text}>Grasas</Text>
-          <TextInput
-            style={styles.inputNewProduct}
-            // value={confirmPass}
-            // onChangeText={setConfirmPass}
-          />
+          {/* ///////////////////////////Formulario parte CATEGORIA ////////////////////////////////// */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.text}>CATEGORIA</Text>
+            <SelectDropdown
+              style={styles.select}
+              data={auxCat}
+              value={newCategorie}
+              onSelect={(e) => {
+                setNewCategorie(e);
+                setCategorieOk("#efefef");
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text represented after item is selected
+                // if data array is an array of objects then return selectedItem.property to render after item is selected
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                // text represented for each item in dropdown
+                // if data array is an array of objects then return item.property to represent item in dropdown
+                return item;
+              }}
+            />
+            <Text style={[{ color: categorieOk }]}>Elige una categoría</Text>
+          </View>
+          {/* ///////////////////////////Formulario parte NOMBRE////////////////////////////////// */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.text}>NOMBRE</Text>
+            <TextInput
+              style={styles.inputNewProduct}
+              value={name}
+              onChangeText={(e) => {
+                setName(e);
+                if (e != "") {
+                  setNameOk("#efefef");
+                } else {
+                  setNameOk("red");
+                }
+              }}
+            />
+            <Text style={[{ color: nameOk }]}>Introduce un nombre</Text>
+          </View>
+          {/* ///////////////////////////Formulario parte CALORIAS ////////////////////////////////// */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.text}>CALORIAS</Text>
+            <TextInput
+              keyboardType="numeric"
+              style={[styles.inputNewProduct]}
+              value={newCalories}
+              onChangeText={(e) => {
+                setNewCalories(e);
+                if (isNaN(Number(e))) {
+                  setCaloriesOk("red");
+                } else {
+                  setCaloriesOk("#efefef");
+                }
+              }}
+            />
+            <Text style={[{ color: caloriesOk }]}>
+              Introduce un valor válido
+            </Text>
+          </View>
+          {/* ///////////////////////////Formulario parte PROTEINA////////////////////////////////// */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.text}>PROTEINAS</Text>
+            <TextInput
+              keyboardType="numeric"
+              style={styles.inputNewProduct}
+              value={newProtein}
+              onChangeText={(e) => {
+                setNewProtein(e);
+                if (isNaN(Number(e))) {
+                  setProteinOk("red");
+                } else {
+                  setProteinOk("#efefef");
+                }
+              }}
+            />
+            <Text style={[{ color: proteinOk }]}>
+              Introduce un valor válido
+            </Text>
+          </View>
+          {/* ///////////////////////////Formulario parte CARBOHIDRATOS////////////////////////////////// */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.text}>CARBOHIDRATOS</Text>
+            <TextInput
+              keyboardType="numeric"
+              style={[styles.inputNewProduct]}
+              value={newCarbohydrates}
+              onChangeText={(e) => {
+                setNewCarbohydrates(e);
+                if (isNaN(Number(e))) {
+                  setCarbonhydratesOk("red");
+                } else {
+                  setCarbonhydratesOk("#efefef");
+                }
+              }}
+            />
+            <Text style={[{ color: carbonhydratesOk }]}>
+              Introduce un valor válido
+            </Text>
+          </View>
+          {/* ///////////////////////////Formulario parte GRASAS////////////////////////////////// */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.text}>GRASAS</Text>
+            <TextInput
+              keyboardType="numeric"
+              style={[styles.inputNewProduct]}
+              value={newFat}
+              onChangeText={(e) => {
+                setNewFat(e);
+                if (isNaN(Number(e))) {
+                  setFatOk("red");
+                } else {
+                  setFatOk("#efefef");
+                }
+              }}
+            />
+            <Text style={[{ color: fatOk }]}>Introduce un valor válido</Text>
+          </View>
+          {/* ///////////////////////////Formulario parte PRECIO////////////////////////////////// */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.text}>PRECIO</Text>
+            <TextInput
+              keyboardType="numeric"
+              style={[styles.inputNewProduct]}
+              onChangeText={(e) => {
+                setNewPrice(e);
+                if (isNaN(Number(e))) {
+                  setPriceOk("red");
+                } else {
+                  setPriceOk("#efefef");
+                }
+              }}
+            />
+            <Text style={[{ color: priceOk }]}>Introduce un valor válido</Text>
+          </View>
         </View>
-        {image ? (
-          <Image
-            source={{
-              uri: image,
-            }}
-            style={styles.image}
-            resizeMode="cover"
-          />
-        ) : (
-          <Image
-            source={{
-              uri: "https://images.pexels.com/photos/8471739/pexels-photo-8471739.jpeg?auto=compress&cs=tinysrgb&w=600",
-            }}
-            style={styles.image}
-            resizeMode="cover"
-          />
-        )}
-        <Pressable style={styles.loginButton} onPress={pickImage}>
-          <Text>Tomar foto</Text>
-        </Pressable>
-        <Pressable style={styles.loginButton} onPress={confirmImage}>
+        {/* ///////////////////////////Formulario IMAGEN ////////////////////////////////// */}
+        <View style={styles.inputContainer}>
+          {image ? (
+            <Image
+              source={{
+                uri: image,
+              }}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          ) : (
+            <Image
+              source={{
+                uri: "https://images.pexels.com/photos/8471739/pexels-photo-8471739.jpeg?auto=compress&cs=tinysrgb&w=600",
+              }}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          )}
+          <Pressable style={styles.loginButton} onPress={pickImage}>
+            <Text>Tomar foto</Text>
+          </Pressable>
+        </View>
+        <Pressable
+          style={styles.loginButton}
+          onPress={confirmImage}
+          disabled={check}
+        >
           <Text>Guardar</Text>
         </Pressable>
       </View>
