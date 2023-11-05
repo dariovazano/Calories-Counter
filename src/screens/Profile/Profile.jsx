@@ -19,13 +19,16 @@ import { Header } from "../../components";
 import {
   useGetCategoriesQuery,
   usePostNewProductMutation,
+  useGetProductsQuery,
 } from "../../services/shopApi";
 import SelectDropdown from "react-native-select-dropdown";
 import CategoryItemStyle from "../Home/components/CategoryItem/CategoryItem.style";
 import { colors } from "../../constants/colors";
 
 const Profile = ({ navigation }) => {
-  /////
+  {
+    /* ///////////////////////////INICIALIZO LAS VARIABLES DEL FORMULARIO (execpto la cámara) ////////////////////////////////// */
+  }
   const [name, setName] = useState("");
   const [nameOk, setNameOk] = useState("red");
   const [newCategorie, setNewCategorie] = useState("");
@@ -41,13 +44,6 @@ const Profile = ({ navigation }) => {
   const [newPrice, setNewPrice] = useState("");
   const [priceOk, setPriceOk] = useState("red");
   const [check, setCheck] = useState(true);
-
-  /////
-
-  useEffect(() => {
-    console.log(caloriesOk);
-    console.log(newCalories);
-  }, [caloriesOk, categorieOk, proteinOk, fatOk, carbonhydratesOk]);
 
   ///
   const { data, isLoading } = useGetCategoriesQuery();
@@ -99,10 +95,49 @@ const Profile = ({ navigation }) => {
     triggerSaveProfileImage({ image, localId });
     console.log(result);
     ///
-    triggerSaveNewProduct({ name, image });
+    triggerSaveNewProduct({
+      localId,
+      name,
+      image,
+      newCalories,
+      newCategorie,
+      newCarbohydrates,
+      newProtein,
+      newPrice,
+      newFat,
+    });
     console.log(result2);
     ///
   };
+
+  {
+    /* /////////////VERIFICO TODOS LOS IMPUTS ESTEN OK ANTES DE ADMITIR EL GUARDADO DE DATOS //////// */
+  }
+  useEffect(() => {
+    if (
+      (categorieOk == "#efefef") &
+      (nameOk == "#efefef") &
+      (caloriesOk == "#efefef") &
+      (proteinOk == "#efefef") &
+      (carbonhydratesOk == "#efefef") &
+      (fatOk == "#efefef") &
+      (priceOk == "#efefef")
+    ) {
+      console.log("ok");
+      setCheck(false);
+    } else {
+      setCheck(true);
+      console.log("nook");
+    }
+  }, [
+    caloriesOk,
+    categorieOk,
+    proteinOk,
+    fatOk,
+    carbonhydratesOk,
+    nameOk,
+    priceOk,
+  ]);
 
   return (
     <ScrollView>
@@ -111,7 +146,7 @@ const Profile = ({ navigation }) => {
         <View style={styles.loginContainer}>
           {/* ///////////////////////////Formulario parte CATEGORIA ////////////////////////////////// */}
           <View style={styles.inputContainer}>
-            <Text style={styles.text}>CATEGORIA</Text>
+            <Text style={styles.text}>CATEGORÍA</Text>
             <SelectDropdown
               style={styles.select}
               data={auxCat}
@@ -163,6 +198,11 @@ const Profile = ({ navigation }) => {
                   setCaloriesOk("red");
                 } else {
                   setCaloriesOk("#efefef");
+                  if (e != "") {
+                    setCaloriesOk("#efefef");
+                  } else {
+                    setCaloriesOk("red");
+                  }
                 }
               }}
             />
@@ -183,6 +223,11 @@ const Profile = ({ navigation }) => {
                   setProteinOk("red");
                 } else {
                   setProteinOk("#efefef");
+                  if (e != "") {
+                    setProteinOk("#efefef");
+                  } else {
+                    setProteinOk("red");
+                  }
                 }
               }}
             />
@@ -203,6 +248,11 @@ const Profile = ({ navigation }) => {
                   setCarbonhydratesOk("red");
                 } else {
                   setCarbonhydratesOk("#efefef");
+                  if (e != "") {
+                    setCarbonhydratesOk("#efefef");
+                  } else {
+                    setCarbonhydratesOk("red");
+                  }
                 }
               }}
             />
@@ -223,6 +273,11 @@ const Profile = ({ navigation }) => {
                   setFatOk("red");
                 } else {
                   setFatOk("#efefef");
+                  if (e != "") {
+                    setFatOk("#efefef");
+                  } else {
+                    setFatOk("red");
+                  }
                 }
               }}
             />
@@ -240,6 +295,11 @@ const Profile = ({ navigation }) => {
                   setPriceOk("red");
                 } else {
                   setPriceOk("#efefef");
+                  if (e != "") {
+                    setPriceOk("#efefef");
+                  } else {
+                    setPriceOk("red");
+                  }
                 }
               }}
             />

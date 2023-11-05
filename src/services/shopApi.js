@@ -10,11 +10,11 @@ export const shopApi = createApi({
       query: () => 'categories.json',
     }),
     getProducts: builder.query({
-      query: () => 'products.json',
+      query: () => 'userProducts/wgWpHkdUZ0hu8msnSDQ8m39VsZn1.json',
     }),
     getProductsByCategory: builder.query({
       query: category =>
-        `products.json?orderBy="category"&equalTo="${category}"`,
+        `userProducts.json?orderBy="category"&equalTo="${category}"`,
     }),
     postOrder: builder.mutation({
       query: ({ ...order }) => ({
@@ -27,14 +27,30 @@ export const shopApi = createApi({
 
     //////
     postNewProduct: builder.mutation({
-      query: ({ name, image }) => ({
-        url: `product2.json`,
-        method: 'POST',
-        body: {
-          name: name,
-          image: image,
-        },
-      }),
+      query: ({ localId,
+        name,
+        image,
+        newCalories,
+        newCategorie,
+        newCarbohydrates,
+        newProtein,
+        newPrice, newFat }) => ({
+          url: `userProducts/${localId}.json`,
+          method: 'POST',
+          body: {
+
+            price: newPrice,
+            category: newCategorie,
+            title: name,
+            images: image,
+            grasas: newFat,
+            proteinas: newProtein,
+            hidratosDeCarbono: newCarbohydrates,
+            valoreEnegetico: newCalories,
+            id: Date.now(),
+
+          },
+        }),
     }),
 
     /////

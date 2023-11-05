@@ -10,13 +10,17 @@ import React, { useEffect, useState } from "react";
 
 import { SearchInput } from "../../components";
 import styles from "./Products.style";
-import { useGetProductsByCategoryQuery } from "../../services/shopApi";
+import {
+  useGetProductsByCategoryQuery,
+  useGetProductsQuery,
+} from "../../services/shopApi";
 import { useSelector } from "react-redux";
 import { Header } from "../../components";
 const Products = ({ navigation }) => {
   const category = useSelector((state) => state.shop.categorySelected);
   const [keyword, setKeyword] = useState("");
-  const { data, isLoading } = useGetProductsByCategoryQuery(category);
+  // const { data, isLoading } = useGetProductsByCategoryQuery(category);
+  const { data, isLoading } = useGetProductsQuery();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,16 +42,16 @@ const Products = ({ navigation }) => {
                 <Image
                   style={styles.image}
                   source={{
-                    uri: item.images[0],
+                    uri: item.images,
                   }}
                 />
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.valor}>{`${item.valoreEnergetico.toFixed(
-                  2
-                )} Kcal`}</Text>
-                <Text
+                <Text style={styles.valor}>{`${Number(
+                  item.valoreEnegetico
+                ).toFixed(2)} Kcal`}</Text>
+                {/* <Text
                   style={styles.macros}
-                >{`Proteinas: ${item.proteinas.toFixed(2)} g`}</Text>
+                >{`Proteinas: ${Number(item.proteinas).toFixed(2)} g`}</Text>
                 <Text
                   style={styles.macros}
                 >{`Carbohidratos: ${item.hidratosDeCarbono.toFixed(
@@ -55,7 +59,7 @@ const Products = ({ navigation }) => {
                 )} g`}</Text>
                 <Text style={styles.macros}>{`Grasas: ${item.grasas.toFixed(
                   2
-                )} g`}</Text>
+                )} g`}</Text> */}
               </TouchableOpacity>
             )}
             keyExtractor={(item) => item.id}
