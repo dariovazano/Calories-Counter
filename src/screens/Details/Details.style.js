@@ -34,5 +34,14 @@ export default styles = StyleSheet.create({
     marginBottom: 15,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  inputNewProduct: {
+    width: '95%',
+    backgroundColor: colors.tertiary,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    textAlign: 'center',
+  },
 })

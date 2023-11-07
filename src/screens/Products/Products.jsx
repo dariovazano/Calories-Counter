@@ -49,17 +49,15 @@ const Products = ({ navigation }) => {
                 <Text style={styles.valor}>{`${Number(
                   item.valoreEnegetico
                 ).toFixed(2)} Kcal`}</Text>
-                {/* <Text
-                  style={styles.macros}
-                >{`Proteinas: ${Number(item.proteinas).toFixed(2)} g`}</Text>
-                <Text
-                  style={styles.macros}
-                >{`Carbohidratos: ${item.hidratosDeCarbono.toFixed(
-                  2
-                )} g`}</Text>
-                <Text style={styles.macros}>{`Grasas: ${item.grasas.toFixed(
-                  2
-                )} g`}</Text> */}
+                <Text style={styles.macros}>{`Proteinas: ${Number(
+                  item.proteinas
+                ).toFixed(2)} g`}</Text>
+                <Text style={styles.macros}>{`Carbohidratos: ${Number(
+                  item.hidratosDeCarbono
+                ).toFixed(2)} g`}</Text>
+                <Text style={styles.macros}>{`Grasas: ${Number(
+                  item.grasas
+                ).toFixed(2)} g`}</Text>
               </TouchableOpacity>
             )}
             keyExtractor={(item) => item.id}
