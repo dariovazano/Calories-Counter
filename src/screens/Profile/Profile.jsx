@@ -19,7 +19,6 @@ import { Header } from "../../components";
 import {
   useGetCategoriesQuery,
   usePostNewProductMutation,
-  useGetProductsQuery,
 } from "../../services/shopApi";
 import SelectDropdown from "react-native-select-dropdown";
 import CategoryItemStyle from "../Home/components/CategoryItem/CategoryItem.style";

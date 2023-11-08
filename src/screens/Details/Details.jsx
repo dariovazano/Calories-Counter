@@ -13,6 +13,8 @@ import styles from "./Details.style";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { Checkbox } from "react-native-paper";
+import { usePostOrderMutation } from "../../services/shopApi";
+import { useSelector } from "react-redux";
 
 const Details = ({ route }) => {
   const { product } = route.params;
@@ -20,9 +22,12 @@ const Details = ({ route }) => {
   const [cantidad, setCantidad] = useState("");
   const [cantidadOk, SetCantidadOk] = useState("red");
   const [check, setCheck] = useState(true);
+  const [triggerPost, result] = usePostOrderMutation();
+  const { localId } = useSelector((state) => state.auth);
 
   const handleAddToCart = () => {
-    dispatch(addItem({ ...product, quantity: 1 }));
+    // dispatch(addItem({ ...product, quantity: 1 }));
+    triggerPost({ product, cantidad, localId });
   };
 
   useEffect(() => {

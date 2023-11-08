@@ -19,7 +19,7 @@ import { Header } from "../../components";
 const Products = ({ navigation }) => {
   const category = useSelector((state) => state.shop.categorySelected);
   const [keyword, setKeyword] = useState("");
-  // const { data, isLoading } = useGetProductsByCategoryQuery(category);
+  //const { data, isLoading } = useGetProductsByCategoryQuery(category);
   const { data, isLoading } = useGetProductsQuery();
 
   return (

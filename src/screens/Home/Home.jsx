@@ -1,22 +1,25 @@
-import { FlatList, SafeAreaView, StatusBar, View } from 'react-native'
+import { FlatList, SafeAreaView, StatusBar, View } from "react-native";
 
-import { CategoryItem } from './components'
-import { Header } from '../../components'
-import React from 'react'
-import styles from './Home.style'
-import { useGetCategoriesQuery } from '../../services/shopApi'
+import { CategoryItem } from "./components";
+import { Header } from "../../components";
+import React from "react";
+import styles from "./Home.style";
+import { useGetCategoriesQuery } from "../../services/shopApi";
 
 const Home = ({ navigation }) => {
-  const { data, isLoading } = useGetCategoriesQuery()
+  const { data, isLoading } = useGetCategoriesQuery();
+
+  //////////tomo un atajo a productos sin categoria ni nda navigation.navigate("Products");
+
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar animated={true} barStyle={'dark-content'} />
-      <Header title={'Categories'} />
+      <StatusBar animated={true} barStyle={"dark-content"} />
+      <Header title={"Categories"} />
       <View style={styles.listContainer}>
         {!isLoading && (
           <FlatList
             data={data}
-            keyExtractor={category => category.title}
+            keyExtractor={(category) => category.title}
             renderItem={({ item }) => (
               <CategoryItem category={item.title} navigation={navigation} />
             )}
@@ -24,7 +27,7 @@ const Home = ({ navigation }) => {
         )}
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
