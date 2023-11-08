@@ -11,7 +11,7 @@ export const shopApi = createApi({
     }),
     getProducts: builder.query({
       query:
-        () => 'userProducts/wgWpHkdUZ0hu8msnSDQ8m39VsZn1.json',
+        localId => 'userProducts/wgWpHkdUZ0hu8msnSDQ8m39VsZn1.json',
     }),
     getProductsByCategory: builder.query({
       query: category =>
@@ -76,7 +76,7 @@ export const shopApi = createApi({
 
 
     getProfileImage: builder.query({
-      query: localId => `profileImages/${localId}.json`,
+      query: localId => `profileImages/wgWpHkdUZ0hu8msnSDQ8m39VsZn1.json`,
     }),
     postProfileImage: builder.mutation({
       query: ({ image, localId }) => ({

@@ -11,8 +11,10 @@ import {
 import React from "react";
 import styles from "./Orders.Styles";
 import { useGetOrdersQuery } from "../../services/shopApi";
+import { useSelector } from "react-redux";
 
 const Orders = () => {
+  const { localId } = useSelector((state) => state.auth);
   const { data, isLoading } = useGetOrdersQuery();
   console.log(data);
 

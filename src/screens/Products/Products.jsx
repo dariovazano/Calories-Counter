@@ -18,9 +18,10 @@ import { useSelector } from "react-redux";
 import { Header } from "../../components";
 const Products = ({ navigation }) => {
   const category = useSelector((state) => state.shop.categorySelected);
+  const { localId } = useSelector((state) => state.auth);
   const [keyword, setKeyword] = useState("");
   //const { data, isLoading } = useGetProductsByCategoryQuery(category);
-  const { data, isLoading } = useGetProductsQuery();
+  const { data, isLoading } = useGetProductsQuery(localId);
 
   return (
     <SafeAreaView style={styles.container}>
