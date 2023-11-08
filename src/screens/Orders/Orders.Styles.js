@@ -4,6 +4,47 @@ import { colors } from '../../constants/colors'
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: colors.white,
   },
+  listContainer: {
+    flex: 1,
+    marginTop: 15,
+    paddingHorizontal: 15,
+  },
+  weapperStyle: {
+    justifyContent: 'space-between',
+  },
+  productContainer: {
+    width: '100%',
+    backgroundColor: colors.grey,
+    marginBottom: 20,
+    alignItems: 'flex-start',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+    gap: 10,
+    borderColor: colors.secondary,
+    borderWidth: 3,
+  },
+  image: {
+    alignSelf: 'center',
+    height: 150,
+    width: 150,
+  },
+  title: {
+    fontWeight: '700',
+    fontVariant: 'small-caps',
+  },
+  valor: {
+    fontSize: 20,
+    fontVariant: '',
+  },
+  macros: {
+    fontSize: 10,
+    fontVariant: '',
+  },
+  fecha: {
+    fontSize: 7,
+    fontVariant: '',
+  }
 })

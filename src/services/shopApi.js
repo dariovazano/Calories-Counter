@@ -26,8 +26,8 @@ export const shopApi = createApi({
           title: product.title,
           calorias: Number(product.valoreEnegetico) * cantidad / 100,
           carbohidratos: Number(product.hidratosDeCarbono) * cantidad / 100,
-          proteinas: Number(product.proteina) * cantidad / 100,
-          grasas: Number(product.grasa) * cantidad / 100,
+          proteinas: Number(product.proteinas) * cantidad / 100,
+          grasas: Number(product.grasas) * cantidad / 100,
           costo: Number(product.price) * cantidad / 100,
           cantidad: Number(cantidad),
 
@@ -64,6 +64,12 @@ export const shopApi = createApi({
         }),
     }),
 
+
+    getOrders: builder.query({
+      query:
+        () => 'userComidas/wgWpHkdUZ0hu8msnSDQ8m39VsZn1.json',
+    }),
+
     /////
 
 
@@ -87,6 +93,7 @@ export const shopApi = createApi({
 export const {
   useGetCategoriesQuery,
   useGetProductsQuery,
+  useGetOrdersQuery,
   useGetProductsByCategoryQuery,
   usePostOrderMutation,
   useGetProfileImageQuery,
